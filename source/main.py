@@ -1,19 +1,16 @@
-# Importando bibliotecas
+# Importação das bibliotecas e arquivos da aplicação.
 
 import tkinter as tk
 from modules import janelaconfig
 
-# Criando janela de menu principal.
+# Cria e configura janela principal.
 
-root = tk.Tk()
-menu_principal = root
+janela_principal = tk.Tk()  # Cria objeto janela principal.
+janela_principal.title('Cadastrei')  # Define o título da janela.
+config_janelaprincipal = janelaconfig.Janela(master=janela_principal)  # Acessa configuração janelaconfig.
+config_janelaprincipal.centraliza_tamanho(janela=janela_principal)  # Centraliza a janela na tela.
 
-# Configuração dimensoes e centraliza a janela principal.
-
-menu_principal.geometry(f'800x600')
-janelaconfig.centraliza_janela(menu_principal)
-
-# Inicializa aplicação.
+# Inicia aplicação.
 
 if __name__ == '__main__':
-    menu_principal.mainloop()
+    janela_principal.mainloop()

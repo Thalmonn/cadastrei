@@ -1,15 +1,29 @@
-def centraliza_janela(menu_principal):
-    menu_principal.update_idletasks()
+# Classe de configuração padrão de janela.
 
-    # Encontra resolução da tela.
+class Janela:
 
-    tela_largura = menu_principal.winfo_screenwidth()
-    tela_altura = menu_principal.winfo_screenheight()
+    def __init__(self, master=None):
+        self.master = master
+        self.master.attributes('-topmost', True)
 
-    # Define posição da janela.
+    @staticmethod
+    def centraliza_tamanho(janela):
 
-    tamanho = tuple(int(_) for _ in menu_principal.geometry().split('+')[0].split('x'))
-    x = tela_largura / 2 - tamanho[0] / 2
-    y = tela_altura / 2 - tamanho[1] / 2
+        # Tamanho da janela principal.
 
-    menu_principal.geometry("+%d+%d" % (x, y))
+        janela_largura = 800
+        janela_altura = 600
+
+        # Coleta informações do tamanho da tela (monitor).
+
+        tela_largura = janela.winfo_screenwidth()
+        tela_altura = janela.winfo_screenheight()
+
+        # Define as coordenadas da posição da janela.
+
+        x = (tela_largura / 2) - (janela_largura / 2)
+        y = (tela_altura / 2) - (janela_altura / 2)
+
+        # Representa geometria da janela.
+
+        janela.geometry(f'{janela_largura}x{janela_altura}+{int(x)}+{int(y)}')
