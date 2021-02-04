@@ -1,7 +1,12 @@
 # Importação das bibliotecas e arquivos da aplicação.
 
+from pathlib import Path
 import tkinter as tk
 from modules import janelaconfig
+
+# Importa recursos para aplicação.
+
+resources_folder = Path('cadastrei/resources')
 
 # Cria e configura janela principal.
 
