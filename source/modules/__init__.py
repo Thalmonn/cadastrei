@@ -1,1 +1,1 @@
-__all__ = ['janelaconfig']
+__all__ = ['janelaconfig', 'menu']
