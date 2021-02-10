@@ -90,12 +90,16 @@ class MenuPrincipal(tk.Frame):
 
 # Funções
 
+# Cria o som de click.
+
 
 def click_sound():
     pygame.init()
     pygame.mixer.music.load('./resources/sound/mouseclick.wav')
     pygame.mixer.music.play()
     pygame.event.wait(timeout=1)
+
+# Cria o som de deletar.
 
 
 def delete_sound():
@@ -104,9 +108,13 @@ def delete_sound():
     pygame.mixer.music.play()
     pygame.event.wait(timeout=1)
 
+# Realiza ações ao clicar.
+
 
 def on_click():
     click_sound()
+
+# Finaliza a aplicação ao clicar no botão sair.
 
 
 def fechando_programa():
