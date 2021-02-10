@@ -48,7 +48,7 @@ class MenuPrincipal(tk.Frame):
                                      command=on_click,
                                      )
 
-        cadastro_cliente.image = cadastro_icon  # Chama icone junto ao botão.
+        cadastro_cliente.image = cadastro_icon  # Significa chamar icones junto aos botões.
 
         ver_clientes = tk.Button(self,
                                  text='Visualizar',
