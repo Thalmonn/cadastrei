@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import pygame
+import time as delay
 
 # Classe destinada ao menu principal da aplicação.
 
@@ -75,7 +76,8 @@ class MenuPrincipal(tk.Frame):
                                  width=120,
                                  height=50,
                                  bd=5,
-                                 relief='raised'
+                                 relief='raised',
+                                 command=fechando_programa
                                  )
 
         sair_sistema.image = sair_icon
@@ -96,5 +98,18 @@ def click_sound():
     pygame.event.wait(timeout=1)
 
 
+def delete_sound():
+    pygame.init()
+    pygame.mixer.music.load('./resources/sound/deleted.wav')
+    pygame.mixer.music.play()
+    pygame.event.wait(timeout=1)
+
+
 def on_click():
     click_sound()
+
+
+def fechando_programa():
+    delete_sound()
+    delay.sleep(0.6)
+    exit()
