@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+import pygame
 
 # Classe destinada ao menu principal da aplicação.
 
@@ -12,6 +13,7 @@ class MenuPrincipal(tk.Frame):
         super().__init__()
 
     # GUI
+
         # Botões
 
         # Icone do Botão Cadastrar
@@ -41,7 +43,8 @@ class MenuPrincipal(tk.Frame):
                                      width=120,
                                      height=50,
                                      bd=5,
-                                     relief='raised'
+                                     relief='raised',
+                                     command=on_click,
                                      )
 
         cadastro_cliente.image = cadastro_icon  # Chama icone junto ao botão.
@@ -56,7 +59,8 @@ class MenuPrincipal(tk.Frame):
                                  width=120,
                                  height=50,
                                  bd=5,
-                                 relief='raised'
+                                 relief='raised',
+                                 command=on_click
                                  )
 
         ver_clientes.image = ver_icon
@@ -81,3 +85,16 @@ class MenuPrincipal(tk.Frame):
         cadastro_cliente.grid(row=1, column=0, sticky='')
         ver_clientes.grid(row=2, column=0, sticky='')
         sair_sistema.grid(row=3, column=0, sticky='')
+
+# Funções
+
+
+def click_sound():
+    pygame.init()
+    pygame.mixer.music.load('./resources/sound/mouseclick.wav')
+    pygame.mixer.music.play()
+    pygame.event.wait(timeout=1)
+
+
+def on_click():
+    click_sound()
