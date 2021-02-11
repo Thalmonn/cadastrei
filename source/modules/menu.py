@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import pygame
 import time as delay
+from modules import cadastro
 
 # Classe destinada ao menu principal da aplicação.
 
@@ -45,7 +46,7 @@ class MenuPrincipal(tk.Frame):
                                      height=50,
                                      bd=5,
                                      relief='raised',
-                                     command=on_click,
+                                     command=lambda: [on_click(), abre_cadastro()]
                                      )
 
         cadastro_cliente.image = cadastro_icon  # Chama icone junto do botão.
@@ -112,6 +113,12 @@ def delete_sound():
 
 def on_click():
     click_sound()
+
+# Abre toplevel de cadastro com formulário.
+
+
+def abre_cadastro():
+    cadastro.Formulario()
 
 # Finaliza a aplicação ao clicar no botão sair.
 
