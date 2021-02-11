@@ -1,5 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+import pygame
+import time as delay
 from modules import janelaconfig
 
 
@@ -123,6 +125,7 @@ class Formulario(tk.Toplevel):
                                      height=50,
                                      bd=5,
                                      relief='raised',
+                                     command=save_form
                                      )
         botao_salvarform.image = salvarform_icon  # Chama icone junto ao botão.
 
@@ -137,6 +140,7 @@ class Formulario(tk.Toplevel):
                                       height=50,
                                       bd=5,
                                       relief='raised',
+                                      command=lambda: [retorna_menu(), self.destroy()]
                                       )
         botao_retornamenu.image = retornamenu_icon  # Chama icone junto ao botão.
 
@@ -175,3 +179,43 @@ class Formulario(tk.Toplevel):
         # Botões
         botao_salvarform.grid(row=8, column=1, sticky='se')
         botao_retornamenu.grid(row=8, column=0, sticky='sw')
+
+# Funções
+
+# Som do click no botão.
+
+
+def click_sound():
+    pygame.init()
+    pygame.mixer.music.load('./resources/sound/mouseclick.wav')
+    pygame.mixer.music.play()
+    pygame.event.wait(timeout=1)
+
+# Som de salvar formulário.
+
+
+def save_sound():
+    pygame.init()
+    pygame.mixer.music.load('./resources/sound/saved.wav')
+    pygame.mixer.music.play()
+    pygame.event.wait(timeout=1)
+
+# Realiza ações ao clicar.
+
+
+def on_click():
+    click_sound()
+
+# Salva o formulário na database.
+
+
+def save_form():
+    save_sound()
+    # Restante será implementado.
+
+# Retorna a janela inicial.
+
+
+def retorna_menu():
+    on_click()
+    delay.sleep(0.1)
