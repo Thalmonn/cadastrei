@@ -1,5 +1,7 @@
 import tkinter as tk
+from PIL import Image, ImageTk
 from modules import janelaconfig
+
 
 # Classe destinada ao formulário de cadastro.
 
@@ -99,6 +101,45 @@ class Formulario(tk.Toplevel):
                              anchor='w'
                              )
 
+        # Botões
+
+        # Icone do Botão salvarform.
+        icon_salvarformabre = Image.open('./resources/img/icons/salvaricon.ico')  # Carrega icone do botão.
+        icon_salvarformabre = icon_salvarformabre.resize((30, 30), Image.ANTIALIAS)  # Redimensiona o icone.
+        salvarform_icon = ImageTk.PhotoImage(icon_salvarformabre)  # Define icone do botão.
+
+        icon_retornamenumabre = Image.open('./resources/img/icons/returnmenu.ico')  # Carrega icone do botão.
+        icon_retornamenumabre = icon_retornamenumabre.resize((30, 30), Image.ANTIALIAS)  # Redimensiona o icone.
+        retornamenu_icon = ImageTk.PhotoImage(icon_retornamenumabre)  # Define icone do botão.
+
+        botao_salvarform = tk.Button(self,
+                                     text='Salvar',
+                                     compound='left',
+                                     image=salvarform_icon,
+                                     padx=10,
+                                     bg='#d5fdec',
+                                     font='Roboto 12 bold',
+                                     width=120,
+                                     height=50,
+                                     bd=5,
+                                     relief='raised',
+                                     )
+        botao_salvarform.image = salvarform_icon  # Chama icone junto ao botão.
+
+        botao_retornamenu = tk.Button(self,
+                                      text='Retornar',
+                                      compound='left',
+                                      image=retornamenu_icon,
+                                      padx=10,
+                                      bg='#d5fdec',
+                                      font='Roboto 12 bold',
+                                      width=120,
+                                      height=50,
+                                      bd=5,
+                                      relief='raised',
+                                      )
+        botao_retornamenu.image = retornamenu_icon  # Chama icone junto ao botão.
+
         # Entrys referente a cada imput do formulário
         nome_campo = tk.Entry(frame_cadastro, width=80)
         nascimento_campo = tk.Entry(frame_cadastro, width=10)
@@ -130,3 +171,7 @@ class Formulario(tk.Toplevel):
         email_campo.grid(row=5, column=1, sticky='w')
         rg_campo.grid(row=6, column=1, sticky='w')
         cpf_campo.grid(row=7, column=1, sticky='w')
+
+        # Botões
+        botao_salvarform.grid(row=8, column=1, sticky='se')
+        botao_retornamenu.grid(row=8, column=0, sticky='sw')
