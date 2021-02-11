@@ -4,7 +4,6 @@ class Janela:
 
     def __init__(self, master=None):
         self.master = master
-        self.master.attributes('-topmost', True)
 
     @staticmethod
     def centraliza_tamanho(janela):

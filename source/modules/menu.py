@@ -82,8 +82,7 @@ class MenuPrincipal(tk.Frame):
 
         sair_sistema.image = sair_icon
 
-    # Layout
-
+    # Layout de botões.
         cadastro_cliente.grid(row=1, column=0, sticky='')
         ver_clientes.grid(row=2, column=0, sticky='')
         sair_sistema.grid(row=3, column=0, sticky='')
