@@ -192,31 +192,27 @@ class Formulario(tk.Toplevel):
         botao_salvarform.grid(row=8, column=1, sticky='se')
         botao_retornamenu.grid(row=8, column=0, sticky='sw')
 
-        # Funções destinadas ao gerenciamento da database.
+        # Configuração de layout do formcadastro.
 
-        def foco1():
-            nome_campo.focus_set()
+        formcadastro.column_dimensions['A'].width = 80
+        formcadastro.column_dimensions['B'].width = 10
+        formcadastro.column_dimensions['C'].width = 30
+        formcadastro.column_dimensions['D'].width = 80
+        formcadastro.column_dimensions['E'].width = 12
+        formcadastro.column_dimensions['F'].width = 40
+        formcadastro.column_dimensions['G'].width = 7
+        formcadastro.column_dimensions['H'].width = 11
 
-        def foco2():
-            nascimento_campo.focus_set()
+        # Escreve no formcadastro o posicionamento dos dados.
 
-        def foco3():
-            atividade_campo.focus_set()
-
-        def foco4():
-            endereco_campo.focus_set()
-
-        def foco5():
-            telefone_campo.focus_set()
-
-        def foco6():
-            email_campo.focus_set()
-
-        def foco7():
-            rg_campo.focus_set()
-
-        def foco8():
-            cpf_campo.focus_set()
+        formcadastro.cell(row=1, column=1).value = "Nome"
+        formcadastro.cell(row=1, column=2).value = "Data de Nascimento"
+        formcadastro.cell(row=1, column=3).value = "Atividade"
+        formcadastro.cell(row=1, column=4).value = "Endereço"
+        formcadastro.cell(row=1, column=5).value = "Telefone"
+        formcadastro.cell(row=1, column=6).value = "Email"
+        formcadastro.cell(row=1, column=7).value = "RG"
+        formcadastro.cell(row=1, column=8).value = "CPF"
 
         # Função destinada a limpar as entry do formulário.
 
@@ -259,7 +255,7 @@ class Formulario(tk.Toplevel):
                 formcadastro.cell(row=linha_atual + 1, column=5).value = telefone_campo.get()
                 formcadastro.cell(row=linha_atual + 1, column=6).value = email_campo.get()
                 formcadastro.cell(row=linha_atual + 1, column=7).value = rg_campo.get()
-                formcadastro.cell(row=linha_atual + 1, column=7).value = cpf_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=8).value = cpf_campo.get()
 
                 # Salva a database
                 database.save('./database/database.xlsx')
@@ -273,17 +269,8 @@ class Formulario(tk.Toplevel):
                 # Exibe mensagem de confirmação
                 tkinter.messagebox.showinfo('Sucesso', 'Cadastro realizado com sucesso.', parent=self)
 
-        # Método responsável por unir database com interface gráfica.
-
-        nome_campo.bind(self, '<Return>', foco1)
-        nascimento_campo.bind(self, '<Return>', foco2)
-        atividade_campo.bind(self, '<Return>', foco3)
-        endereco_campo.bind(self, '<Return>', foco4)
-        telefone_campo.bind(self, '<Return>', foco5)
-        email_campo.bind(self, '<Return>', foco6)
-        rg_campo.bind(self, '<Return>', foco7)
-        cpf_campo.bind(self, '<Return>', foco8)
-
+        # Define o foco inicial de preenchimento do formulário.
+        nome_campo.focus_set()
 
 # Funções Gerais
 
