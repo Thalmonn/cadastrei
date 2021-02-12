@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import pygame
 import time as delay
 from modules import cadastro
+from modules import visualiza
 
 # Classe destinada ao menu principal da aplicação.
 
@@ -62,7 +63,7 @@ class MenuPrincipal(tk.Frame):
                                  height=50,
                                  bd=5,
                                  relief='raised',
-                                 command=on_click
+                                 command=lambda: [on_click(), abre_visualiza()]
                                  )
 
         ver_clientes.image = ver_icon
@@ -119,6 +120,12 @@ def on_click():
 
 def abre_cadastro():
     cadastro.Formulario()
+
+# Abre toplevel de visualiza com dados da database.
+
+
+def abre_visualiza():
+    visualiza.MostraData()
 
 # Finaliza a aplicação ao clicar no botão sair.
 

@@ -1,3 +1,3 @@
 # Responsável por carregar todos os modulos.
 
-__all__ = ['janelaprincipal', 'menu', 'janelaconfig', 'cadastro']
+__all__ = ['janelaprincipal', 'menu', 'janelaconfig', 'cadastro', 'visualiza']
