@@ -5,6 +5,7 @@ import time as delay
 from openpyxl import *
 from modules import janelaconfig
 import os
+import tkinter.messagebox
 
 # Função inicial destinada a verificar se a database já existe.
 
@@ -242,7 +243,8 @@ class Formulario(tk.Toplevel):
                     rg_campo.get() == "" or
                     cpf_campo.get() == ""):
 
-                print("Você não preencheu todos os campos.")
+                # Exibe mensagem de campos faltantes.
+                tkinter.messagebox.showinfo('Atenção', 'Por favor, preencha todos os campos.', parent=self)
 
             else:
                 # Define o maximo de linhas e colunas de acordo com o tamanho da database.
@@ -267,6 +269,9 @@ class Formulario(tk.Toplevel):
 
                 # Limpa as entry boxes.
                 limpa_entry()
+
+                # Exibe mensagem de confirmação
+                tkinter.messagebox.showinfo('Sucesso', 'Cadastro realizado com sucesso.', parent=self)
 
         # Método responsável por unir database com interface gráfica.
 
