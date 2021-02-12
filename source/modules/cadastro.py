@@ -2,7 +2,18 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import pygame
 import time as delay
+from openpyxl import *
 from modules import janelaconfig
+import os
+
+# Função inicial destinada a verificar se a database já existe.
+
+if os.path.exists('./database/database.xlsx'):
+    database = load_workbook('./database/database.xlsx')
+    formcadastro = database.active
+else:
+    database = Workbook()
+    formcadastro = database.active
 
 
 # Classe destinada ao formulário de cadastro.
@@ -125,7 +136,7 @@ class Formulario(tk.Toplevel):
                                      height=50,
                                      bd=5,
                                      relief='raised',
-                                     command=save_form
+                                     command=lambda: [save_form(), cadastra()]
                                      )
         botao_salvarform.image = salvarform_icon  # Chama icone junto ao botão.
 
@@ -180,7 +191,96 @@ class Formulario(tk.Toplevel):
         botao_salvarform.grid(row=8, column=1, sticky='se')
         botao_retornamenu.grid(row=8, column=0, sticky='sw')
 
-# Funções
+        # Funções destinadas ao gerenciamento da database.
+
+        def foco1():
+            nome_campo.focus_set()
+
+        def foco2():
+            nascimento_campo.focus_set()
+
+        def foco3():
+            atividade_campo.focus_set()
+
+        def foco4():
+            endereco_campo.focus_set()
+
+        def foco5():
+            telefone_campo.focus_set()
+
+        def foco6():
+            email_campo.focus_set()
+
+        def foco7():
+            rg_campo.focus_set()
+
+        def foco8():
+            cpf_campo.focus_set()
+
+        # Função destinada a limpar as entry do formulário.
+
+        def limpa_entry():
+            nome_campo.delete(0, 'end')
+            nascimento_campo.delete(0, 'end')
+            atividade_campo.delete(0, 'end')
+            endereco_campo.delete(0, 'end')
+            telefone_campo.delete(0, 'end')
+            email_campo.delete(0, 'end')
+            rg_campo.delete(0, 'end')
+            cpf_campo.delete(0, 'end')
+
+        # Função destinada a coletar os dados da interface e colocar no formulario.
+
+        def cadastra():
+            # Informa que existe algum campo em branco.
+            if (nome_campo.get() == "" or
+                    nascimento_campo.get() == "" or
+                    atividade_campo.get() == "" or
+                    endereco_campo.get() == "" or
+                    telefone_campo.get() == "" or
+                    email_campo.get() == "" or
+                    rg_campo.get() == "" or
+                    cpf_campo.get() == ""):
+
+                print("Você não preencheu todos os campos.")
+
+            else:
+                # Define o maximo de linhas e colunas de acordo com o tamanho da database.
+                linha_atual = formcadastro.max_row
+                # coluna_atual = formcadastro.max_column
+
+                # Coleta informações no formulário e preenche a database.
+                formcadastro.cell(row=linha_atual + 1, column=1).value = nome_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=2).value = nascimento_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=3).value = atividade_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=4).value = endereco_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=5).value = telefone_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=6).value = email_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=7).value = rg_campo.get()
+                formcadastro.cell(row=linha_atual + 1, column=7).value = cpf_campo.get()
+
+                # Salva a database
+                database.save('./database/database.xlsx')
+
+                # Define o foco no campo nome.
+                nome_campo.focus_set()
+
+                # Limpa as entry boxes.
+                limpa_entry()
+
+        # Método responsável por unir database com interface gráfica.
+
+        nome_campo.bind(self, '<Return>', foco1)
+        nascimento_campo.bind(self, '<Return>', foco2)
+        atividade_campo.bind(self, '<Return>', foco3)
+        endereco_campo.bind(self, '<Return>', foco4)
+        telefone_campo.bind(self, '<Return>', foco5)
+        email_campo.bind(self, '<Return>', foco6)
+        rg_campo.bind(self, '<Return>', foco7)
+        cpf_campo.bind(self, '<Return>', foco8)
+
+
+# Funções Gerais
 
 # Som do click no botão.
 
@@ -191,6 +291,7 @@ def click_sound():
     pygame.mixer.music.play()
     pygame.event.wait(timeout=1)
 
+
 # Som de salvar formulário.
 
 
@@ -200,18 +301,21 @@ def save_sound():
     pygame.mixer.music.play()
     pygame.event.wait(timeout=1)
 
+
 # Realiza ações ao clicar.
 
 
 def on_click():
     click_sound()
 
+
 # Salva o formulário na database.
 
 
 def save_form():
     save_sound()
-    # Restante será implementado.
+    delay.sleep(0.1)
+
 
 # Retorna a janela inicial.
 
