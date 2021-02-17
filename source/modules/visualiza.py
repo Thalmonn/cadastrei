@@ -5,15 +5,7 @@ import time as delay
 from openpyxl import *
 from modules import janelaconfig
 import os
-
-# Função inicial destinada a verificar existencia da database.
-
-if os.path.exists('./database/database.xlsx'):
-    database = load_workbook('./database/database.xlsx')
-    formcadastro = database.active
-else:
-    database = Workbook()
-    formcadastro = database.active
+from tkinter.messagebox import showwarning
 
 # Classe destinada a visualização da database.
 
@@ -40,19 +32,27 @@ class MostraData(tk.Toplevel):
         frame_db = tk.Frame(self, bg='#185c37')
         frame_db.grid(sticky='', padx=2, pady=2)
 
-        # Cria variáveis para cada coluna.
-        coluna_a = formcadastro['A']
-        coluna_b = formcadastro['B']
-        coluna_c = formcadastro['C']
-        coluna_d = formcadastro['D']
-        coluna_e = formcadastro['E']
-        coluna_f = formcadastro['F']
-        coluna_g = formcadastro['G']
-        coluna_h = formcadastro['H']
-
-        # Define funções que atualiza a visualização dos dados na GUI.
+        # Define funções que carrega e atualiza GUI com as infos da database.
 
         def atualiza_dados():
+            if os.path.exists('./database/database.xlsx'):
+                database = load_workbook('./database/database.xlsx')
+                formcadastro = database.active
+            else:
+                database = Workbook()
+                formcadastro = database.active
+
+            # Cria variáveis para cada coluna.
+            coluna_a = formcadastro['A']
+            coluna_b = formcadastro['B']
+            coluna_c = formcadastro['C']
+            coluna_d = formcadastro['D']
+            coluna_e = formcadastro['E']
+            coluna_f = formcadastro['F']
+            coluna_g = formcadastro['G']
+            coluna_h = formcadastro['H']
+
+            # Atualiza o conteudo de cada label.
             lista = ''
             for cell in coluna_a:
                 lista = f'{lista + str(cell.value)}\n'
@@ -101,6 +101,13 @@ class MostraData(tk.Toplevel):
 
             label_h.config(text=lista8)
 
+        def informa_existencia():
+            if os.path.exists('./database/database.xlsx'):
+                return True
+            else:
+                showwarning('Atenção!', 'Para exibição correta da database, realize no mínimo '
+                                        'um cadastro.', parent=self)
+
         # Botões
 
         # Icone do Botão Mostrar Database
@@ -119,7 +126,7 @@ class MostraData(tk.Toplevel):
                                height=50,
                                bd=5,
                                relief='raised',
-                               command=lambda: [on_click(), atualiza_dados()]
+                               command=lambda: [on_click(), atualiza_dados(), informa_existencia()]
                                )
 
         mostrar_db.image = mostrar_icon
