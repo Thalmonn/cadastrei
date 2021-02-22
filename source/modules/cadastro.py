@@ -226,6 +226,26 @@ class Formulario(tk.Toplevel):
             rg_campo.delete(0, 'end')
             cpf_campo.delete(0, 'end')
 
+        # Função destinada a mascarar e validar a data de nascimento.
+
+        nascimento_campo.insert('end', '  /  /    ')
+
+        def mascara_nascimento(event):  # Event chamado quando número é digitado.
+            if any(letra.isalpha() for letra in nascimento_campo.get()):
+                return tkinter.messagebox.showinfo('Atenção!', 'A data de nascimento deve conter somente numeros.',
+                                                   parent=self)
+            elif len(nascimento_campo.get()) > 12:
+                return tkinter.messagebox.showinfo('Atenção!', 'A data de nascimento deve conter no máximo 8 numeros.',
+                                                   parent=self)
+            elif len(nascimento_campo.get()) == 2:
+                nascimento_campo.insert('end', '/')
+            elif len(nascimento_campo.get()) == 5:
+                nascimento_campo.insert('end', '/')
+            elif len(nascimento_campo.get()) == 11:
+                nascimento_campo.delete(10, 'end')
+
+        nascimento_campo.bind('<KeyRelease>', mascara_nascimento)
+
         # Função destinada a coletar os dados da interface e colocar no formulario.
 
         def cadastra():
@@ -241,6 +261,68 @@ class Formulario(tk.Toplevel):
 
                 # Exibe mensagem de campos faltantes.
                 tkinter.messagebox.showinfo('Atenção', 'Por favor, preencha todos os campos.', parent=self)
+
+            # Validação destinada aos campos.
+
+            # Valida Nome:
+            elif nome_campo.get().isnumeric() or len(nome_campo.get()) > 80:
+
+                # Exibe mensagem de campo nome incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'Por favor, o campo de nome dever conter apenas letras e '
+                                                        'possuir no máximo 80 caracteres.', parent=self)
+
+            # nacimento_campo validado na linha 233.
+
+            # Valida Atividade:
+            elif atividade_campo.get().isnumeric() or len(atividade_campo.get()) > 30:
+
+                # Exibe mensagem de campo atividade incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'Por favor, o campo de atividade dever conter apenas letras e '
+                                                        'possuir no máximo 30 caracteres.', parent=self)
+
+            # Valida Endereço:
+            elif len(endereco_campo.get()) > 80:
+
+                # Exibe mensagem de campo endereço incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'Por favor, o campo de endereço dever possuir '
+                                                        'no máximo 80 caracteres.', parent=self)
+
+            # Valida Telefone:
+            elif any(letra.isalpha() for letra in telefone_campo.get()):
+                return tkinter.messagebox.showinfo('Atenção!', 'O telefone deve conter apenas números.',
+                                                   parent=self)
+            elif len(telefone_campo.get()) > 12:
+
+                # Exibe mensagem de campo telefone incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'O telefone deve possuir no máximo 12 digitos.',
+                                            parent=self)
+
+            # Valida E-mail:
+            elif len(email_campo.get()) > 40:
+
+                # Exibe mensagem de campo email incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'O email deve possuir no máximo 40 caracteres.',
+                                            parent=self)
+
+            # Valida RG:
+            elif any(letra.isalpha() for letra in rg_campo.get()):
+                return tkinter.messagebox.showinfo('Atenção!', 'O RG deve conter apenas números.',
+                                                   parent=self)
+            elif len(rg_campo.get()) > 7:
+
+                # Exibe mensagem de campo RG incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'O RG deve possuir no máximo 7 digitos.',
+                                            parent=self)
+
+            # Valida CPF:
+            elif any(letra.isalpha() for letra in cpf_campo.get()):
+                return tkinter.messagebox.showinfo('Atenção!', 'O CPF deve conter apenas números.',
+                                                   parent=self)
+            elif len(cpf_campo.get()) > 11:
+
+                # Exibe mensagem de campo RG incorreto.
+                tkinter.messagebox.showinfo('Atenção!', 'O CPF deve possuir no máximo 11 digitos.',
+                                            parent=self)
 
             else:
                 # Define o maximo de linhas e colunas de acordo com o tamanho da database.
@@ -271,6 +353,7 @@ class Formulario(tk.Toplevel):
 
         # Define o foco inicial de preenchimento do formulário.
         nome_campo.focus_set()
+
 
 # Funções Gerais
 
