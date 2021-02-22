@@ -26,9 +26,6 @@ no início do seu empreendimento. O Cadastrei é uma aplicação totalmente grat
 
 > Funções a serem implementadas:
 
-* Validação dos dados cadastrados
 * Editar os dados cadastrados diretamente na interface.
-
-Primeira release estará disponível em breve, com nosso instalador.
 
 Obrigado por visualizar o repositório do projeto.
