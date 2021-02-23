@@ -4,6 +4,7 @@ import pygame
 import time as delay
 from modules import cadastro
 from modules import visualiza
+import sys
 
 # Classe destinada ao menu principal da aplicação.
 
@@ -133,4 +134,4 @@ def abre_visualiza():
 def fechando_programa():
     delete_sound()
     delay.sleep(0.6)
-    exit()
+    sys.exit()
