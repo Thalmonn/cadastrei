@@ -6,14 +6,15 @@ Essa aplicação é destinada ao cadastro de pessoas em um banco de dados feito 
 removendo a necessidade de um servidor para hospedar esse banco.
 
 A aplicação foi pensada para pequenos empreendedores que gostariam de ter um controle dos seus clientes, sem precisar investir em um software,
-no início do seu empreendimento. O Cadastrei é uma aplicação totalmente gratuita.
+no início do seu empreendimento. O Cadastrei é uma aplicação totalmente gratuita.  
 
 
-Baixe o executável:
+Baixe o executável:  
+
 Cadastrei v0.1
 
 <a href="https://drive.google.com/file/d/1dY45Ok48CbPaQ-i5cwHV7YmVOm1Zn2NO/view?usp=sharing">
-  <img src="source/resources/img/icons/mainicon.ico" alt="Google Drive" style="width:50px;height:50px;">
+  <img src="source/resources/img/icons/download.ico" alt="Google Drive" width="50" height="50">
 </a>
 
 ® Todos os recursos utilizados nessa aplicação tem os direitos reservados aos seus respectivos proprietários.
