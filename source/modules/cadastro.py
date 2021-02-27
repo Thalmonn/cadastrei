@@ -163,7 +163,7 @@ class Formulario(tk.Toplevel):
         endereco_campo = tk.Entry(frame_cadastro, width=80)
         telefone_campo = tk.Entry(frame_cadastro, width=12)
         email_campo = tk.Entry(frame_cadastro, width=40)
-        rg_campo = tk.Entry(frame_cadastro, width=7)
+        rg_campo = tk.Entry(frame_cadastro, width=11)
         cpf_campo = tk.Entry(frame_cadastro, width=11)
 
         # Layout
@@ -200,7 +200,7 @@ class Formulario(tk.Toplevel):
         formcadastro.column_dimensions['D'].width = 80
         formcadastro.column_dimensions['E'].width = 12
         formcadastro.column_dimensions['F'].width = 40
-        formcadastro.column_dimensions['G'].width = 7
+        formcadastro.column_dimensions['G'].width = 11
         formcadastro.column_dimensions['H'].width = 11
 
         # Escreve no formcadastro o posicionamento dos dados.
@@ -308,10 +308,10 @@ class Formulario(tk.Toplevel):
             elif any(letra.isalpha() for letra in rg_campo.get()):
                 return tkinter.messagebox.showinfo('Atenção!', 'O RG deve conter apenas números.',
                                                    parent=self)
-            elif len(rg_campo.get()) > 7:
+            elif len(rg_campo.get()) > 11:
 
                 # Exibe mensagem de campo RG incorreto.
-                tkinter.messagebox.showinfo('Atenção!', 'O RG deve possuir no máximo 7 digitos.',
+                tkinter.messagebox.showinfo('Atenção!', 'O RG deve possuir no máximo 11 digitos.',
                                             parent=self)
 
             # Valida CPF:
