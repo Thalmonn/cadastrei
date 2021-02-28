@@ -11,10 +11,10 @@ no início do seu empreendimento. O Cadastrei é uma aplicação totalmente grat
 
 Baixe o executável:  
 
-Cadastrei v0.1
+Cadastrei v0.1.1
 
-<a href="https://drive.google.com/file/d/1dY45Ok48CbPaQ-i5cwHV7YmVOm1Zn2NO/view?usp=sharing">
-  <img src="source/resources/img/icons/download.ico" alt="Google Drive" width="50" height="50">
+<a href="https://github.com/Thalmonn/cadastrei/releases/download/v0.1.1/cadastrei_0.1.1.rar">
+  <img src="source/resources/img/icons/download.ico" alt="GitHub" width="50" height="50">
 </a>
 
 ® Todos os recursos utilizados nessa aplicação tem os direitos reservados aos seus respectivos proprietários.
