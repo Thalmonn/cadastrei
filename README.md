@@ -17,7 +17,12 @@ Cadastrei v0.1.1
   <img src="source/resources/img/icons/download.ico" alt="GitHub" width="50" height="50">
 </a>
 
-® Todos os recursos utilizados nessa aplicação tem os direitos reservados aos seus respectivos proprietários.
+- - -
+
+Vídeo mostrando um pouco da aplicação:  
+[<img src="https://img.youtube.com/vi/7z73jeVlf9Q/maxresdefault.jpg" width="25%">](https://youtu.be/7z73jeVlf9Q)  
+
+- - -
 
 > Funções disponíveis no momento:
 
@@ -38,3 +43,5 @@ Cadastrei v0.1.1
 * Editar os dados cadastrados diretamente na interface.
 
 Obrigado por visualizar o repositório do projeto.
+
+® Todos os recursos utilizados nessa aplicação tem os direitos reservados aos seus respectivos proprietários.  
