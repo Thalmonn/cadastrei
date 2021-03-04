@@ -42,6 +42,4 @@ Vídeo mostrando um pouco da aplicação:
 
 * Editar os dados cadastrados diretamente na interface.
 
-Obrigado por visualizar o repositório do projeto.
-
-® Todos os recursos utilizados nessa aplicação tem os direitos reservados aos seus respectivos proprietários.  
+Obrigado por visualizar o repositório do projeto.  
